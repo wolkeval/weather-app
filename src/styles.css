@@ -1,0 +1,176 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+header,
+main,
+footer {
+  text-align: center;
+}
+
+h3,
+.current-city-date-time,
+.current-details,
+.description,
+#city-input {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+a {
+  color: #4592af;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #4592af;
+  text-decoration: none;
+}
+
+body {
+  color: #e6dedd;
+  /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); */
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  /* background: #222831; */
+  font-family: "Libre Franklin", sans-serif;
+}
+
+button {
+  background: transparent;
+  border: 2px solid #e6dedd;
+  border-radius: 50%;
+  box-shadow: 5px 5px 20px rgb(17, 17, 17, 0.2);
+  color: #e6dedd;
+  float: right;
+  font-size: 25px;
+  opacity: 70%;
+  transition: ease-in-out;
+  height: 60px;
+  width: 60px;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+footer {
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+}
+
+h3 {
+  line-height: 30px;
+}
+
+li {
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+
+header {
+  margin-top: 30px;
+}
+
+strong {
+  color: #ffce76;
+}
+
+ul {
+  font-size: 16px;
+  list-style-type: none;
+  padding: 45px 0;
+  text-align: left;
+}
+
+/* .container {
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  max-width: 90%;
+} */
+
+.description {
+  color: #ffce76;
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin-top: 17px;
+  text-transform: uppercase;
+}
+
+.current-city-date-time {
+  padding: 10px 0 20px 0;
+}
+
+.current-degrees {
+  font-size: 35px;
+  padding: 60px 0;
+  text-align: right;
+}
+
+.current-details .fas {
+  color: #4592af;
+}
+
+.current-weather {
+  padding: 20px 0;
+}
+
+.forecast-days {
+  text-transform: uppercase;
+}
+
+.forecast-icon {
+  font-size: 60px;
+}
+
+i.forecast-icon {
+  opacity: 70%;
+  transition: all 150ms ease-in-out;
+}
+
+i.forecast-icon:hover {
+  opacity: 100%;
+}
+
+.forecast-wrapper {
+  padding: 12px 0 20px 0;
+}
+
+.forecast-temp {
+  line-height: 27px;
+}
+
+.logo {
+  color: #ffce76;
+  float: left;
+  font-family: "Sacramento", cursive;
+  font-size: 63px;
+  font-weight: 500px;
+}
+
+#current-icon {
+  font-size: 170px;
+}
+
+#greet-city {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+#city-input {
+  border: 1px solid rgb(17, 17, 17, 0.1);
+  border-radius: 30px;
+  background: #e6dedd;
+  max-width: 100%;
+  opacity: 50%;
+  padding: 15px;
+  transition: all 250ms ease-in-out;
+  width: 500px;
+}
+
+#city-input:hover {
+  border: 1px solid rgb(17, 17, 17, 0.1);
+  opacity: 90%;
+}

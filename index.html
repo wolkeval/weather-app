@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin&family=PT+Mono&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/9a7c935aa6.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>☀️ Weatherino | Weather Forecast</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="col-4">
+            <h1 class="logo">Weatherino</h1>
+          </div>
+          <div class="col-4">
+            <form class="search-bar">
+              <input
+                autofocus
+                autocomplete="off"
+                id="city-input"
+                placeholder="🔍 Search for a city"
+                type="text"
+              />
+            </form>
+          </div>
+          <div class="col-2">
+            <button id="switch"><i class="fas fa-thermometer-three-quarters"></i>
+          </div>
+          <div class="col-1">
+            <button id="location"><i class="fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-wrapper">
+        <section class="current-city-date-time">
+          <h1 id="greet-city">Good evening, <span id="current-city"></span>.</h1>
+          <h3>
+            <span id="date"></span>
+            <br />
+            <span id="time"></span>
+          </h3>
+        </section>
+
+        <section class="current-weather">
+          <div class="row">
+            <div class="col-4">
+              <p class="current-degrees"><span id="current-degrees"></span>°</p>
+            </div>
+            <div class="col-4">
+              <p>
+                <i class="fas fa-cloud-showers-heavy" id="current-icon"></i>
+              </p>
+            </div>
+            <div class="col-4 current-details">
+              <ul>
+                <li><i class="fas fa-tint"></i> <span id="humidity"></span></li>
+                <li><i class="fas fa-wind"></i> <span id="wind"></span></li>
+                <li><i class="fas fa-water"></i> <span id="precipitation"></span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="description"><strong></strong></p>
+        </section>
+
+        <section class="forecast-wrapper">
+          <div class="row">
+            <div class="col">
+              <p>
+                <i class="fas fa-cloud-sun-rain	 forecast-icon"></i>
+              </p>
+            </div>
+            <div class="col">
+              <i class="fas fa-poo-storm forecast-icon"></i>
+            </div>
+            <div class="col">
+              <i class="far fa-snowflake forecast-icon"></i>
+            </div>
+            <div class="col">
+              <i class="fas fa-sun forecast-icon"></i>
+            </div>
+            <div class="col">
+              <i class="fas fa-bolt forecast-icon"></i>
+            </div>
+          </div>
+
+          <div class="row forecast-days">
+            <div class="col">Fri</div>
+            <div class="col">Sat</div>
+            <div class="col">Sun</div>
+            <div class="col">Mon</div>
+            <div class="col">Tue</div>
+          </div>
+
+          <div class="row forecast-temp">
+            <div class="col"><strong>28°</strong> | 23°</div>
+            <div class="col"><strong>28°</strong> | 23°</div>
+            <div class="col"><strong>28°</strong> | 23°</div>
+            <div class="col"><strong>28°</strong> | 23°</div>
+            <div class="col"><strong>28°</strong> | 23°</div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        Coded by
+        <a href="https://www.linkedin.com/in/valeria-strusi" target="_blank"
+          >Valeria Strusi</a> as part of <a href="https://www.shecodes.io" target="_blank">SheCodes Plus</a> 👩‍💻
+        </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

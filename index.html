@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" /> 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Libre+Franklin&family=PT+Mono&family=Sacramento&display=swap"
       rel="stylesheet"
@@ -40,17 +40,21 @@
             </form>
           </div>
           <div class="col-2">
-            <button id="switch"><i class="fas fa-thermometer-three-quarters"></i>
+            <button id="switch" /><i
+              class="fas fa-thermometer-three-quarters"
+            ></i>
           </div>
           <div class="col-1">
-            <button id="location"><i class="fas fa-map-marker-alt"></i>
+            <button id="location" /><i class="fas fa-map-marker-alt"></i>
           </div>
         </div>
       </header>
 
       <main class="main-wrapper">
         <section class="current-city-date-time">
-          <h1 id="greet-city">Good evening, <span id="current-city"></span>.</h1>
+          <h1 id="greet-city">
+            Good evening, <span id="current-city"></span>.
+          </h1>
           <h3>
             <span id="date"></span>
             <br />
@@ -72,7 +76,9 @@
               <ul>
                 <li><i class="fas fa-tint"></i> <span id="humidity"></span></li>
                 <li><i class="fas fa-wind"></i> <span id="wind"></span></li>
-                <li><i class="fas fa-water"></i> <span id="precipitation"></span></li>
+                <li>
+                  <i class="fas fa-water"></i> <span id="precipitation"></span>
+                </li>
               </ul>
             </div>
           </div>
@@ -83,7 +89,7 @@
           <div class="row">
             <div class="col">
               <p>
-                <i class="fas fa-cloud-sun-rain	 forecast-icon"></i>
+                <i class="fas fa-cloud-sun-rain forecast-icon"></i>
               </p>
             </div>
             <div class="col">
@@ -119,8 +125,11 @@
       </main>
 
       <footer>
-        <a href="https://github.com/wolkeval/weather-app" target="_blank">Open-source code</a> by Valeria Strusi 👩‍💻
-        </footer>
+        <a href="https://github.com/wolkeval/weather-app" target="_blank"
+          >Open-source code</a
+        >
+        by Valeria Strusi 👩‍💻
+      </footer>
     </div>
     <script src="src/index.js"></script>
   </body>

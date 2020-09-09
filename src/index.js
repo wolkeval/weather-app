@@ -82,6 +82,7 @@ function showWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let descriptionElement = document.querySelector("#description");
+  let iconElement = document.querySelector("#current-icon");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;

@@ -12,7 +12,7 @@ footer {
 h3,
 .current-city-date-time,
 .current-details,
-.description,
+#description,
 #city-input {
   font-size: 18px;
   font-weight: 300;
@@ -90,14 +90,6 @@ ul {
   max-width: 90%;
 } */
 
-.description {
-  color: #ffce76;
-  font-size: 23px;
-  letter-spacing: 2px;
-  margin-top: 17px;
-  text-transform: uppercase;
-}
-
 .current-city-date-time {
   padding: 10px 0 20px 0;
 }
@@ -151,6 +143,14 @@ i.forecast-icon:hover {
 
 #current-icon {
   font-size: 170px;
+}
+
+#description {
+  color: #ffce76;
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin-top: 17px;
+  text-transform: uppercase;
 }
 
 #greet-city {

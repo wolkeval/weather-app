@@ -45,6 +45,7 @@ button {
   color: #e6dedd;
   float: right;
   font-size: 25px;
+  margin-top: 4px;
   opacity: 70%;
   transition: ease-in-out;
   height: 60px;
@@ -163,10 +164,11 @@ i.forecast-icon:hover {
   border: 1px solid rgb(17, 17, 17, 0.1);
   border-radius: 30px;
   background: #e6dedd;
+  margin-top: 11px;
   max-width: 100%;
   opacity: 50%;
-  padding: 15px;
-  transition: all 250ms ease-in-out;
+  padding: 23px;
+  transition: all 200ms ease-in-out;
   width: 500px;
 }
 

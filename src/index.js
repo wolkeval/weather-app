@@ -1,6 +1,3 @@
-// Sets initial temperature unit to Celsius
-let celsiusFlag = true;
-
 let apiKey = "e04e51dd1592166f33d5c79d198d4731";
 let units = "metric";
 
@@ -101,15 +98,14 @@ function retrieveByCoordinates(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
-// Receives a city either on load (Tokyo) or from handleForm, makes an API call and calls showWeather
+// Receives a city either on load (Berlin) or from handleForm, makes an API call and calls showWeather
 function retrieveByCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(showWeather);
 }
 
-// Displays the weather for Tokyo on load
-retrieveByCity("Tokyo");
+// Displays the weather for Berlin on load
+retrieveByCity("Berlin");
 
 function handleForm(city) {
   city.preventDefault();
@@ -134,12 +130,12 @@ function toCelsius(fahrenheit) {
 function changeTempUnit() {
   let currentDegrees = document.querySelector("#current-degrees");
   // Switches between Celsius and Fahrenheit
-  if (celsiusFlag) {
+  if (units === "metric") {
     currentDegrees.innerHTML = toFahrenheit(currentDegrees.innerHTML);
-    celsiusFlag = false;
+    units = "imperial";
   } else {
     currentDegrees.innerHTML = toCelsius(currentDegrees.innerHTML);
-    celsiusFlag = true;
+    units = "metric";
   }
 }
 

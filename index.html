@@ -13,12 +13,13 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="src/weather-icons.min.css" />
     <link rel="stylesheet" href="src/styles.css" />
     <script
       src="https://kit.fontawesome.com/9a7c935aa6.js"
       crossorigin="anonymous"
     ></script>
-    <title>☀️ Weatherino | Weather Forecast</title>
+    <title>🔆 Weatherino | Weather Forecast</title>
   </head>
 
   <body>
@@ -70,7 +71,8 @@
             </div>
             <div class="col-4">
               <p>
-                <i class="fas fa-cloud-showers-heavy" id="current-icon"></i>
+                <i class="wi wi-day-cloudy-gusts" id="current-icon"></i>
+                <!-- <i class="fas fa-poo-storm" id="current-icon"></i> -->
               </p>
             </div>
             <div class="col-4 current-details">
@@ -87,41 +89,7 @@
         </section>
 
         <section class="forecast-wrapper">
-          <div class="row">
-            <div class="col">
-              <p>
-                <i class="fas fa-cloud-sun-rain forecast-icon"></i>
-              </p>
-            </div>
-            <div class="col">
-              <i class="fas fa-poo-storm forecast-icon"></i>
-            </div>
-            <div class="col">
-              <i class="far fa-snowflake forecast-icon"></i>
-            </div>
-            <div class="col">
-              <i class="fas fa-sun forecast-icon"></i>
-            </div>
-            <div class="col">
-              <i class="fas fa-bolt forecast-icon"></i>
-            </div>
-          </div>
-
-          <div class="row forecast-days">
-            <div class="col">Fri</div>
-            <div class="col">Sat</div>
-            <div class="col">Sun</div>
-            <div class="col">Mon</div>
-            <div class="col">Tue</div>
-          </div>
-
-          <div class="row forecast-temp">
-            <div class="col"><strong>28°</strong> | 23°</div>
-            <div class="col"><strong>28°</strong> | 23°</div>
-            <div class="col"><strong>28°</strong> | 23°</div>
-            <div class="col"><strong>28°</strong> | 23°</div>
-            <div class="col"><strong>28°</strong> | 23°</div>
-          </div>
+          <div class="row" id="forecast"></div>
         </section>
       </main>
 

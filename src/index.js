@@ -5,8 +5,11 @@ let units = "metric";
 
 // Given target offset wrt UTC (in sec), returns target timestamp (in ms),
 // where target is a specific city
-function getTargetTimestamp(targetOffsetInSec) {
+function getTargetTimestamp(targetTimestampInSec, targetOffsetInSec) {
   let now = new Date();
+  if (targetTimestampInSec !== null) {
+    now = new Date(targetTimestampInSec * 1000);
+  }
   // now.getTimezoneOffset() returns local offset wrt UTC in minutes as UTC time - your local time
   let localOffsetInMs = now.getTimezoneOffset() * 60 * 1000;
   let targetOffsetInMs = targetOffsetInSec * 1000;
@@ -61,7 +64,6 @@ function leadingZero(value) {
 
 function formatTime(timestamp) {
   let now = new Date(timestamp);
-  console.log(now);
   let hours = now.getHours();
   let minutes = now.getMinutes();
   let time = `${leadingZero(hours)}:${leadingZero(minutes)}`;
@@ -86,22 +88,51 @@ function showWeather(response) {
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   descriptionElement.innerHTML = response.data.weather[0].description;
-  let timestamp = getTargetTimestamp(response.data.timezone);
+  let timestamp = getTargetTimestamp(null, response.data.timezone);
   dateElement.innerHTML = formatDate(timestamp);
   timeElement.innerHTML = formatTime(timestamp);
+}
+
+function showForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  // Prevents forecast elements from doubling when searching for a new
+  forecastElement.innerHTML = null;
+
+  for (let i = 0; i < 5; i++) {
+    let forecastTemp = response.data.list[i].main.temp;
+    let forecastTimestamp = getTargetTimestamp(
+      response.data.list[i].dt,
+      response.data.city.timezone
+    );
+    forecastElement.innerHTML += `<div class="col">
+              <p>
+                <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+              </p>
+          <div class="forecast-time">${formatTime(forecastTimestamp)}</div>
+          <div><span class="forecast-temp">${Math.round(
+            forecastTemp
+          )}</span><strong>°</strong></div>`;
+  }
 }
 
 function retrieveByCoordinates(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showWeather);
+  let weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(weatherApi).then(showWeather);
+
+  let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  console.log(forecastApi);
+  axios.get(forecastApi).then(showForecast);
 }
 
-// Receives a city either on load (Berlin) or from handleForm, makes an API call and calls showWeather
+// Receives a city either on load (Berlin) or from handleForm, makes an API call and calls showWeather and showForecast
 function retrieveByCity(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showWeather);
+  let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(weatherApi).then(showWeather);
+
+  let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(forecastApi).then(showForecast);
 }
 
 // Displays the weather for Berlin on load

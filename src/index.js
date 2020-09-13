@@ -95,11 +95,11 @@ function showWeather(response) {
 
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  // Prevents forecast elements from doubling when searching for a new
+  // Prevents forecast elements from doubling when searching for a new city
   forecastElement.innerHTML = null;
 
   for (let i = 0; i < 5; i++) {
-    let forecastTemp = response.data.list[i].main.temp;
+    let forecastDegrees = response.data.list[i].main.temp;
     let forecastTimestamp = getTargetTimestamp(
       response.data.list[i].dt,
       response.data.city.timezone
@@ -110,7 +110,7 @@ function showForecast(response) {
               </p>
           <div class="forecast-time">${formatTime(forecastTimestamp)}</div>
           <div><span class="forecast-temp">${Math.round(
-            forecastTemp
+            forecastDegrees
           )}</span><strong>°</strong></div>`;
   }
 }
@@ -122,7 +122,6 @@ function retrieveByCoordinates(position) {
   axios.get(weatherApi).then(showWeather);
 
   let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  console.log(forecastApi);
   axios.get(forecastApi).then(showForecast);
 }
 
@@ -160,12 +159,19 @@ function toCelsius(fahrenheit) {
 
 function changeTempUnit() {
   let currentDegrees = document.querySelector("#current-degrees");
+  let forecastDegrees = document.querySelectorAll(".forecast-temp");
   // Switches between Celsius and Fahrenheit
   if (units === "metric") {
     currentDegrees.innerHTML = toFahrenheit(currentDegrees.innerHTML);
+    for (let i = 0; i < 5; i++) {
+      forecastDegrees[i].innerHTML = toFahrenheit(forecastDegrees[i].innerHTML);
+    }
     units = "imperial";
   } else {
     currentDegrees.innerHTML = toCelsius(currentDegrees.innerHTML);
+    for (let i = 0; i < 5; i++) {
+      forecastDegrees[i].innerHTML = toCelsius(forecastDegrees[i].innerHTML);
+    }
     units = "metric";
   }
 }

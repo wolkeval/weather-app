@@ -130,7 +130,7 @@ i.forecast-icon:hover {
   padding: 12px 0 20px 0;
 }
 
-.forecast-temp {
+.forecast-degrees {
   color: #ffce76;
   line-height: 27px;
 }

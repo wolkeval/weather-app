@@ -70,7 +70,22 @@ function formatTime(timestamp) {
   return time;
 }
 
-// =======================================================================
+// GREETING ===================================================================
+function greetUser(timestamp) {
+  let greetingElement = document.querySelector("#greeting");
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  if (hours >= 5 && hours < 12) {
+    greetingElement.innerHTML = "Good morning";
+  } else if (hours >= 12 && hours < 18) {
+    greetingElement.innerHTML = "Good afternoon";
+  } else if (hours >= 18 && hours < 22) {
+    greetingElement.innerHTML = "Good evening";
+  } else {
+    greetingElement.innerHTML = "Good night";
+  }
+}
+// ============================================================================
 
 // Receives the API response either from retrieveByCoordinates or retrieveByCity and displays the weather
 function showWeather(response) {
@@ -78,6 +93,7 @@ function showWeather(response) {
   let cityElement = document.querySelector("#current-city");
   let dateElement = document.querySelector("#current-date");
   let timeElement = document.querySelector("#current-time");
+  let feelsLikeElement = document.querySelector("#feels-like");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let descriptionElement = document.querySelector("#description");
@@ -85,12 +101,25 @@ function showWeather(response) {
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
+  feelsLikeElement.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
   humidityElement.innerHTML = `${response.data.main.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   descriptionElement.innerHTML = response.data.weather[0].description;
   let timestamp = getTargetTimestamp(null, response.data.timezone);
-  dateElement.innerHTML = formatDate(timestamp);
-  timeElement.innerHTML = formatTime(timestamp);
+
+  let formattedTime = formatTime(timestamp);
+  let formattedDate = formatDate(timestamp);
+  dateElement.innerHTML = formattedDate;
+  timeElement.innerHTML = formattedTime;
+
+  console.log(response.data.weather[0]);
+
+  iconElement.setAttribute(
+    "class",
+    `wi wi-owm-${"night"}-${response.data.weather[0].id}`
+  );
+
+  greetUser(timestamp);
 }
 
 function showForecast(response) {
@@ -106,10 +135,12 @@ function showForecast(response) {
     );
     forecastElement.innerHTML += `<div class="col">
               <p>
-                <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+                <img class="forecast-icon" src="https://openweathermap.org/img/wn/${
+                  response.data.list[i].weather[0].icon
+                }@2x.png" alt ="" />
               </p>
           <div class="forecast-time">${formatTime(forecastTimestamp)}</div>
-          <div><span class="forecast-temp">${Math.round(
+          <div><span class="forecast-degrees">${Math.round(
             forecastDegrees
           )}</span><strong>°</strong></div>`;
   }
@@ -159,7 +190,7 @@ function toCelsius(fahrenheit) {
 
 function changeTempUnit() {
   let currentDegrees = document.querySelector("#current-degrees");
-  let forecastDegrees = document.querySelectorAll(".forecast-temp");
+  let forecastDegrees = document.querySelectorAll(".forecast-degrees");
   // Switches between Celsius and Fahrenheit
   if (units === "metric") {
     currentDegrees.innerHTML = toFahrenheit(currentDegrees.innerHTML);

@@ -42,9 +42,8 @@
             </form>
           </div>
           <div class="col-2">
-            <button id="switch" /><i
-              class="fas fa-thermometer-three-quarters"
-            ></i>
+            <button id="switch" />
+            <i class="fas fa-thermometer-three-quarters"></i>
           </div>
           <div class="col-1">
             <button id="location" /><i class="fas fa-map-marker-alt"></i>
@@ -55,7 +54,7 @@
       <main class="main-wrapper">
         <section class="current-city-date-time">
           <h1 id="greet-city">
-            Good evening, <span id="current-city"></span>.
+            <span id="greeting"></span>, <span id="current-city"></span>.
           </h1>
           <h3>
             <span id="current-date"></span>
@@ -70,17 +69,21 @@
               <p class="current-degrees"><span id="current-degrees"></span>°</p>
             </div>
             <div class="col-4">
-              <p>
-                <i class="wi wi-day-cloudy-gusts" id="current-icon"></i>
-                <!-- <i class="fas fa-poo-storm" id="current-icon"></i> -->
-              </p>
+              <p><i id="current-icon"></i></p>
             </div>
             <div class="col-4 current-details">
               <ul>
-                <li><i class="fas fa-tint"></i> <span id="humidity"></span></li>
-                <li><i class="fas fa-wind"></i> <span id="wind"></span></li>
                 <li>
-                  <i class="fas fa-water"></i> <span id="precipitation"></span>
+                  <i class="fas fa-tint"></i> Feels like:
+                  <span id="feels-like"></span>
+                </li>
+                <li>
+                  <i class="fas fa-tint"></i> Humidity:
+                  <span id="humidity"></span>
+                </li>
+                <li>
+                  <i class="fas fa-wind"></i> Wind Speed:
+                  <span id="wind"></span>
                 </li>
               </ul>
             </div>

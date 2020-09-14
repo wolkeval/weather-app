@@ -206,15 +206,20 @@ function toCelsius(fahrenheit) {
 function changeTempUnit() {
   let currentDegrees = document.querySelector("#current-degrees");
   let forecastDegrees = document.querySelectorAll(".forecast-degrees");
+  let tempUnitElement = document.querySelector("#switch");
   // Switches between Celsius and Fahrenheit
   if (units === "metric") {
     currentDegrees.innerHTML = toFahrenheit(currentDegrees.innerHTML);
+    tempUnitElement.innerHTML = `
+      <i class="pe-is-w-degree-celsius"></i>`;
     for (let i = 0; i < 5; i++) {
       forecastDegrees[i].innerHTML = toFahrenheit(forecastDegrees[i].innerHTML);
     }
     units = "imperial";
   } else {
     currentDegrees.innerHTML = toCelsius(currentDegrees.innerHTML);
+    tempUnitElement.innerHTML = `
+      <i class="pe-is-w-degree-fahrenheit"></i>`;
     for (let i = 0; i < 5; i++) {
       forecastDegrees[i].innerHTML = toCelsius(forecastDegrees[i].innerHTML);
     }

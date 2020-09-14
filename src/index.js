@@ -161,11 +161,17 @@ function showForecast(response) {
   }
 }
 
+function errorFunction(error) {
+  alert(
+    "Sorry, the location you've entered does not exist. Check your entry and try again."
+  );
+}
+
 function retrieveByCoordinates(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  axios.get(weatherApi).then(showWeather);
+  axios.get(weatherApi).then(showWeather).catch(errorFunction);
 
   let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(forecastApi).then(showForecast);
@@ -174,7 +180,7 @@ function retrieveByCoordinates(position) {
 // Receives a city either on load (Berlin) or from handleForm, makes an API call and calls showWeather and showForecast
 function retrieveByCity(city) {
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(weatherApi).then(showWeather);
+  axios.get(weatherApi).then(showWeather).catch(errorFunction);
 
   let forecastApi = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(forecastApi).then(showForecast);

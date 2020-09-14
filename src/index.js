@@ -91,7 +91,7 @@ function setIcon(timestamp, iconId) {
   let now = new Date(timestamp);
   let hours = now.getHours();
 
-  if (hours < 18) {
+  if (hours >= 5 && hours < 18) {
     let daytime = "day";
     iconElement.setAttribute("class", `wi wi-owm-${daytime}-${iconId}`);
   } else {
@@ -137,15 +137,23 @@ function showForecast(response) {
 
   for (let i = 0; i < 5; i++) {
     let forecastDegrees = response.data.list[i].main.temp;
+    let forecastIconId = response.data.list[i].weather[0].id;
     let forecastTimestamp = getTargetTimestamp(
       response.data.list[i].dt,
       response.data.city.timezone
     );
+    let now = new Date(forecastTimestamp);
+    let hours = now.getHours();
+    let daytime = "";
+    if (hours >= 5 && hours < 18) {
+      daytime = "day";
+    } else {
+      daytime = "night";
+    }
+
     forecastElement.innerHTML += `<div class="col">
               <p>
-                <img class="forecast-icon" src="https://openweathermap.org/img/wn/${
-                  response.data.list[i].weather[0].icon
-                }@2x.png" alt ="" />
+                <i class = "forecast-icon wi wi-owm-${daytime}-${forecastIconId}" /></i>
               </p>
           <div class="forecast-time">${formatTime(forecastTimestamp)}</div>
           <div><span class="forecast-degrees">${Math.round(

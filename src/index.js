@@ -85,8 +85,21 @@ function greetUser(timestamp) {
     greetingElement.innerHTML = "Good night";
   }
 }
-// ============================================================================
+// CURRENT WEATHER ICON =======================================================
+function setIcon(timestamp, iconId) {
+  let iconElement = document.querySelector("#current-icon");
+  let now = new Date(timestamp);
+  let hours = now.getHours();
 
+  if (hours < 18) {
+    let daytime = "day";
+    iconElement.setAttribute("class", `wi wi-owm-${daytime}-${iconId}`);
+  } else {
+    let daytime = "night";
+    iconElement.setAttribute("class", `wi wi-owm-${daytime}-${iconId}`);
+  }
+}
+// ============================================================================
 // Receives the API response either from retrieveByCoordinates or retrieveByCity and displays the weather
 function showWeather(response) {
   let temperatureElement = document.querySelector("#current-degrees");
@@ -97,7 +110,6 @@ function showWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let descriptionElement = document.querySelector("#description");
-  let iconElement = document.querySelector("#current-icon");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
@@ -112,14 +124,10 @@ function showWeather(response) {
   dateElement.innerHTML = formattedDate;
   timeElement.innerHTML = formattedTime;
 
-  console.log(response.data.weather[0]);
-
-  iconElement.setAttribute(
-    "class",
-    `wi wi-owm-${"night"}-${response.data.weather[0].id}`
-  );
+  let iconId = response.data.weather[0].id;
 
   greetUser(timestamp);
+  setIcon(timestamp, iconId);
 }
 
 function showForecast(response) {

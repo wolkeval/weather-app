@@ -42,9 +42,7 @@ button {
   border-radius: 50%;
   box-shadow: 5px 5px 20px rgb(17, 17, 17, 0.2);
   color: #e6dedd;
-  float: right;
   font-size: 25px;
-  margin-top: 4px;
   opacity: 70%;
   transition: ease-in-out;
   height: 60px;
@@ -74,10 +72,6 @@ li {
   line-height: 30px;
 }
 
-header {
-  margin-top: 30px;
-}
-
 strong {
   color: #ffce76;
 }
@@ -87,10 +81,6 @@ ul {
   list-style-type: none;
   padding: 45px 0;
   text-align: left;
-}
-
-.current-city-date-time {
-  padding: 10px 0 20px 0;
 }
 
 .current-degrees {
@@ -132,7 +122,6 @@ i.forecast-icon:hover {
 
 .logo {
   color: #ffce76;
-  float: left;
   font-family: "Sacramento", cursive;
   font-size: 63px;
   font-weight: 500px;
